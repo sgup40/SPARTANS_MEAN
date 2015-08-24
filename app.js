@@ -16,12 +16,21 @@ var routes = require('./routes/index');
 
 var app = express();
 
-mongoose.connect('mongodb://spartadbuser:spartadbuser@127.0.0.1:27017/spartans', function (err) {
+/*mongoose.connect('mongodb://spartadbuser:spartadbuser@127.0.0.1:27017/spartans', function (err) {
     if (err) 
       throw err;
 
     console.log("Successfully connected to MongoDB");
     Info.find({"username":"sumit"}, function (err, Info) {console.log(Info)})
+     console.log("After connected to MongoDB");
+});*/
+mongoose.connect('mongodb://10.202.249.45:27017/spartans', function (err) {
+    if (err) 
+      throw err;
+
+    console.log("Successfully connected to MongoDB");
+    Info.find({"username":"sumit"}, function (err, Info) {console.log(Info)})
+     console.log("After connected to MongoDB");
 });
 var db = mongoose.connection;
 db.on('error', function(msg) {
