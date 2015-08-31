@@ -16,15 +16,9 @@ var routes = require('./routes/index');
 
 var app = express();
 
-/*mongoose.connect('mongodb://spartadbuser:spartadbuser@127.0.0.1:27017/spartans', function (err) {
-    if (err) 
-      throw err;
 
-    console.log("Successfully connected to MongoDB");
-    Info.find({"username":"sumit"}, function (err, Info) {console.log(Info)})
-     console.log("After connected to MongoDB");
-});*/
-mongoose.connect('mongodb://10.202.249.45:27017/spartans', function (err) {
+//For Local Usage
+mongoose.connect('mongodb://spartadbuser:spartadbuser@127.0.0.1:27017/spartans', function (err) {
     if (err) 
       throw err;
 
@@ -32,6 +26,32 @@ mongoose.connect('mongodb://10.202.249.45:27017/spartans', function (err) {
     Info.find({"username":"sumit"}, function (err, Info) {console.log(Info)})
      console.log("After connected to MongoDB");
 });
+
+var options = { 
+    server: { 
+        socketOptions: { 
+            keepAlive: 1,
+            connectTimeoutMS: 30000
+        }
+    },
+    replset: {
+        socketOptions: {
+            keepAlive: 1,
+            connectTimeoutMS : 30000
+        } 
+    }
+};
+
+//mongoose.connect('mongodb://delrsin4011626:27017/spartans',options);
+//mongoose.connect('mongodb://127.0.0.1:27017/spartans',options);
+/*, function (err) {
+    if (err) 
+      throw err;
+
+    console.log("Successfully connected to MongoDB");
+    Info.find({"username":"sumit"}, function (err, Info) {console.log(Info)})
+     console.log("After connected to MongoDB");
+});*/
 var db = mongoose.connection;
 db.on('error', function(msg) {
   console.log('Mongoose connection error %s', msg);
