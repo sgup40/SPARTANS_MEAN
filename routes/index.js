@@ -17,12 +17,15 @@ router.get('/login', function(req, res, next) {
 router.post('/loginAuth', function (req, res) {
 	var body = req.body;
 	console.log(body.username);
+	console.log('Sumit providing the username');
 	if(body.username) {
 		Info.findOne( {_id: req.body.username, password: req.body.password}, function(err, info){
 			if(err) {
 				res.json(err);
 			} 
+			console.log('value of info'+info);
 			if (info === undefined || info === null) {
+				console.log('some problem occur while logging in');
 				res.render('register', {
 					title: 'Login Page'
 				});
