@@ -13,26 +13,6 @@ module.exports = (function (){
 			if(err) {
 				console.log("Error: ", err);
 			}
-			/*
-			cursor = db.collection('Stores').find({coord:{$geoNear:{$geometry:{type:"Point",coordinates:[51.498682,-0.021823]},$maxDistance:40000, spherical: true}}});
-				
-			cursor.each(function(err, doc) {
-				if (err) {
-					console.log('ERRRRR');
-					db.close();
-				};
-				
-				if (doc != null) {
-					results.push(doc);
-				} else {
-					callback(results);
-					db.close();
-				}
-			});
-
-			*/
-			console.log('>>>>>>', location);
-			console.log('>>>>>>', [51.506420135498047,-0.12721000611782074]);
 			
 			db.command({
 				geoNear:"Stores",
@@ -54,7 +34,7 @@ module.exports = (function (){
 				}
 								
 				db.close();
-				callback(results);
+				callback(results.splice(0, 10));
 			});
 	
 		});

@@ -12,8 +12,9 @@
       }
       #map {
         height: 600px;
-		width: 600px;
-		display: none;
+		width: 750px;
+		display: inline-block;
+		visibility: hidden;
       }
 	  
 #panel {
@@ -47,6 +48,19 @@
   font-size: 12px;
 }
 
+#results h2 {
+	cursor: pointer;
+}
+
+.detail {
+	display: none;
+	background: #D3D3D3;
+	padding: 10px;
+}
+
+input:checked + .detail {
+	display: block;
+}
     </style>
   </head>
   <body>
@@ -55,17 +69,22 @@
       <input id="search" type="textbox" value="">
       <input id="submit" type="button" value="Search">
     </div>
-    <div id="map"></div>
-	<div id="results" style="vertical-align: top; display: inline-block">
-		
-	</div>
+    
+	<div id="results" style="vertical-align: top; display: inline-block"></div>
+	<div id="map"></div>	
 	
 	<script id="tpl" type="text/plain">
 		{{#results.length}}
 		<ul>
 			{{#results}}
 			<li>
-				<h2>{{StoreName}}</h2>
+				<h2><label for="chk{{SAPStoreId}}">{{StoreName}}</label></h2>
+				<input type="checkbox" id="chk{{SAPStoreId}}" style="visibility: hidden; position: absolute; left: -9999px" />
+				<div class="detail">
+					<p>{{AddressLine1}}</p>
+					<p>{{AddressLine2}}</p>
+					<p><b>Phone: {{Phone}} </b></p>
+				</div>
 			</li>
 			{{/results}}
 		</ul>
@@ -83,7 +102,7 @@ function initMap() {
    
   Geocoder = new google.maps.Geocoder();
 
-  document.getElementById('map').style.display = 'inline-block'; 
+  //document.getElementById('map').style.display = 'inline-block'; 
 	
 }
 

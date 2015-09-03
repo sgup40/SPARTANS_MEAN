@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var markers = [];
+	var infowindow;
 	
 	$('#submit').click(function(){
 		geocode($('#search').val());
@@ -23,9 +25,11 @@ $(document).ready(function(){
 			if (response.success) {
 				if (response.results.length) {
 					
-					var infowindow = [];
-					  
-					var markers = [];
+					for (var i = 0; i < markers.length; i++) {
+						markers[i].setMap(null);
+					}
+					
+					markers = [];
 					
 					for (var i=0; i<10; i++ ) {
 						
@@ -38,16 +42,16 @@ $(document).ready(function(){
 							title: response.results[i].StoreName
 						}));
 						
-						infowindow.push(new google.maps.InfoWindow({
-							content: '<h2>' + response.results[i].StoreName + '</h2>'
-						}));
+						infowindow = new google.maps.InfoWindow();
 					  
-						markers[markers.length - 1].addListener('click', function() {
-							infowindow[infowindow.length - 1].setContent(this.html);
-							infowindow[infowindow.length - 1].open(Map, this);
+						markers[markers.length - 1].addListener('click', function(){
+							showInfo(this);
 						});
 
-						markers[markers.length - 1].html = '<h2>' + response.results[i].StoreName + '</h2>';
+						markers[markers.length - 1].html = 
+							'<h2>' + response.results[i].StoreName + '</h2>' +
+							'<p>' + response.results[i].AddressLine1 + '</p>' +
+							'<p>' + response.results[i].AddressLine2 + '</p>';
 						markers[markers.length - 1].setMap(Map);
 						
 						bounds.extend (new google.maps.LatLng (response.results[i].Latitude, response.results[i].Longitude));
@@ -55,10 +59,21 @@ $(document).ready(function(){
 
 					Map.fitBounds (bounds);
 					
-					// template
+					document.getElementById('map').style.visibility = 'visible'; 
 					$('#results').html(Stencil.render($('#tpl').html(), response));
+					$('#results h2').click(function(){
+						showInfo(markers[$('#results h2').index($(this))]);
+					});
+					
+					showInfo(markers[0]);
 				}
 			}
 		});
+	}
+	
+	
+	function showInfo (marker) {
+		infowindow.setContent(marker.html);
+		infowindow.open(Map, marker);
 	}
 });
