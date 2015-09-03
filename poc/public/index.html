@@ -4,73 +4,16 @@
     <title>Geocoding service</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 600px;
-		width: 750px;
-		display: inline-block;
-		visibility: hidden;
-      }
-	  
-#panel {
-  background-color: #fff;
-  padding: 20px 0;
-  border: 1px solid #999;
-}
-
-/**
- * Provide the following styles for both ID and class, where ID represents an
- * actual existing "panel" with JS bound to its name, and the class is just
- * non-map content that may already have a different ID with JS bound to its
- * name.
- */
-
-#panel, .panel {
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
-}
-
-#panel select, #panel input, .panel select, .panel input {
-  font-size: 15px;
-}
-
-#panel select, .panel select {
-  width: 100%;
-}
-
-#panel i, .panel i {
-  font-size: 12px;
-}
-
-#results h2 {
-	cursor: pointer;
-}
-
-.detail {
-	display: none;
-	background: #D3D3D3;
-	padding: 10px;
-}
-
-input:checked + .detail {
-	display: block;
-}
-    </style>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <div id="panel">
-	
-      <input id="search" type="textbox" value="">
-      <input id="submit" type="button" value="Search">
+      <input id="search" type="textbox" value="" class="search-input">
+      <input id="submit" type="button" value="Search" class="search-btn">
     </div>
     
-	<div id="results" style="vertical-align: top; display: inline-block"></div>
+	<div id="results"></div>
 	<div id="map"></div>	
 	
 	<script id="tpl" type="text/plain">
@@ -110,8 +53,9 @@ function initMap() {
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"
         async defer></script>
-	<script src="./js/jquery-1.11.3.min.js"></script>
-	<script src="./js/storefinder.js"></script>	
-	<script src="./js/stencil.js"></script>	
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/storefinder.js"></script>	
+	<script src="js/stencil.js"></script>	
+  <script src="js/util.js"></script>
   </body>
 </html>

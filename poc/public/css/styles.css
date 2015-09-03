@@ -1,0 +1,151 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 500px;
+    width: 59%;
+    display: inline-block;
+    visibility: hidden;
+    margin: 10px 10px;
+}
+
+#panel {
+    background-color: #fff;
+    padding: 20px 0;
+    border: 1px solid #999;
+}
+
+
+/**
+ * Provide the following styles for both ID and class, where ID represents an
+ * actual existing "panel" with JS bound to its name, and the class is just
+ * non-map content that may already have a different ID with JS bound to its
+ * name.
+ */
+
+#panel,
+.panel {
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+#panel select,
+.panel select {
+    width: 100%;
+}
+
+#panel i,
+.panel i {
+    font-size: 12px;
+}
+
+#results {
+    display: inline-block;
+    float: left;
+    margin: 10px 10px;
+    width: 35%;
+}
+
+#results label {
+    height: 2.5rem;
+    width: 100%;
+    display: inline-block;
+    line-height: 2.5rem;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+
+#results h2 {
+    cursor: pointer;
+}
+
+.detail {
+    display: none;
+    padding: 0 2rem;
+}
+
+.detail p {
+    height: 1rem;
+    line-height: 1rem;
+    margin: 0.2rem 0;
+}
+
+input:checked + .detail {
+    display: block;
+}
+
+.search-btn {
+    line-height: 3rem;
+    height: 3rem;
+    width: 40%;
+    max-width: 500px;
+    border: 0;
+    color: #333;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.5rem;
+    background: #BDD755;
+    border-color: #aac14c;
+    cursor: pointer;
+}
+
+.search-input {
+    padding: 0 1rem;
+    float: left;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    height: 3rem;
+    display: block;
+    width: 40%;
+    max-width: 500px;
+    margin: 0 1rem 0 0;
+    border: 1px solid #CCC;
+    box-sizing: border-box;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+#results li {
+    border-bottom: 1px solid #6C5E5E;
+    list-style: none;
+    cursor: pointer;
+}
+
+.gm-style .gm-style-iw {
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .search-btn,
+    .search-input {
+        height: 3rem;
+        line-height: 3rem;
+        margin-bottom: 1rem;
+        width: 48%;
+        font-size: 1.3rem;
+    }
+    #results {
+        width: 96%;
+        margin: 0 auto;
+    }
+    #map {
+      width:100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search-btn,
+    .search-input {
+        height: 3rem;
+        line-height: 3rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        width: 98%;
+    }
+}
