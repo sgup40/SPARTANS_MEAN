@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 600px;
+		width: 600px;
+		display: none;
+      }
+	  
+#panel {
+  background-color: #fff;
+  padding: 20px 0;
+  border: 1px solid #999;
+}
+
+/**
+ * Provide the following styles for both ID and class, where ID represents an
+ * actual existing "panel" with JS bound to its name, and the class is just
+ * non-map content that may already have a different ID with JS bound to its
+ * name.
+ */
+
+#panel, .panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#panel select, #panel input, .panel select, .panel input {
+  font-size: 15px;
+}
+
+#panel select, .panel select {
+  width: 100%;
+}
+
+#panel i, .panel i {
+  font-size: 12px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="panel">
+	
+      <input id="search" type="textbox" value="">
+      <input id="submit" type="button" value="Search">
+    </div>
+    <div id="map"></div>
+	<div id="results" style="vertical-align: top; display: inline-block">
+		
+	</div>
+	
+	<script id="tpl" type="text/plain">
+		{{#results.length}}
+		<ul>
+			{{#results}}
+			<li>
+				<h2>{{StoreName}}</h2>
+			</li>
+			{{/results}}
+		</ul>
+		{{/results.length}}
+	</script>
+	
+    <script>
+var Geocoder,
+	Map;	
+function initMap() {
+  Map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: -34.397, lng: 150.644}
+  });
+   
+  Geocoder = new google.maps.Geocoder();
+
+  document.getElementById('map').style.display = 'inline-block'; 
+	
+}
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"
+        async defer></script>
+	<script src="./js/jquery-1.11.3.min.js"></script>
+	<script src="./js/storefinder.js"></script>	
+	<script src="./js/stencil.js"></script>	
+  </body>
+</html>

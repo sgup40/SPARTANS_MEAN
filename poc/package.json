@@ -1,0 +1,19 @@
+{
+  "name": "spartans",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "connect": "^3.4.0",
+    "connect-query": "^0.2.0",
+    "mongodb": "^2.0.42",
+    "serve-static": "^1.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
