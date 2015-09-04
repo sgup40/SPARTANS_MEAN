@@ -14,7 +14,7 @@ body {
 }
 
 #panel {
-    background-color: #fff;
+    background-color: #D9CACA;
     padding: 20px 0;
     border: 1px solid #999;
 }
@@ -52,12 +52,13 @@ body {
 }
 
 #results label {
-    height: 2.5rem;
+    /* height: 1.5rem; */
     width: 100%;
     display: inline-block;
-    line-height: 2.5rem;
+    /* line-height: 1.5rem; */
     padding: 0 1rem;
     cursor: pointer;
+    font-size: 0.9rem;
 }
 
 #results h2 {
@@ -82,7 +83,7 @@ input:checked + .detail {
 .search-btn {
     line-height: 3rem;
     height: 3rem;
-    width: 40%;
+    width: 20%;
     max-width: 500px;
     border: 0;
     color: #333;
@@ -110,7 +111,9 @@ input:checked + .detail {
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-
+#results ul {
+    padding: 0;
+}
 #results li {
     border-bottom: 1px solid #6C5E5E;
     list-style: none;
@@ -135,7 +138,7 @@ input:checked + .detail {
         margin: 0 auto;
     }
     #map {
-      width:100%;
+        width: 100%;
     }
 }
 
