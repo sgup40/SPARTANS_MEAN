@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Search M&S",
+  "description": "Search for a product on M&S",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+  "tabs"
+  ]
+}
